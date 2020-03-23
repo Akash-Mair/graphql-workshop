@@ -5,14 +5,7 @@ const mongoose = require('mongoose');
 const Artist = require('./api/models/artist.js');
 const Song = require('./api/models/song.js');
 
-const server = new ApolloServer(
-    {   
-        typeDefs, 
-        resolvers, 
-        context(){
-            return {Artist, Song}
-        }
-    })
+const server = new ApolloServer()
 
 mongoose.connect('mongodb://localhost:27017/songsgql', {useNewUrlParser: true, useUnifiedTopology: true });
 
