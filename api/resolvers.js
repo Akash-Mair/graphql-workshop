@@ -1,41 +1,41 @@
 module.exports = {
     Query: {
-        songs(_, __, {songModel}){
-            return songModel.find()
+        songs(_, __, {Song}){
+            return Song.find()
         },
-        artists(_,__,{artistModel}){
-            return artistModel.find()
+        artists(_,__,{Artist}){
+            return Artist.find()
         }
     },
     Mutation: {
-        createSong(_, {input}, {songModel}){
-            return songModel.create(input)
+        createSong(_, {input}, {Song}){
+            return Song.create(input)
         },
-        updateSong(_, {input}, {songModel}){
-            return songModel.findByIdAndUpdate({_id: input.id}, {...input})
+        updateSong(_, {input}, {Song}){
+            return Song.findByIdAndUpdate({_id: input.id}, {...input})
         },
-        createArtist(_,{input}, {artistModel}){
-            return artistModel.create(input)
+        createArtist(_,{input}, {Artist}){
+            return Artist.create(input)
         },
-        updateArtist(_, {input}, {artistModel}){
-            return artistModel.findByIdAndUpdate({_id: input.id}, {...input})
+        updateArtist(_, {input}, {Artist}){
+            return Artist.findByIdAndUpdate({_id: input.id}, {...input})
         }
     },
     Song: {
-        id(song,_,{songModel}){
-            return songModel.findOne(song).then(song => song._id)
+        id(song,_,{Song}){
+            return Song.findOne(song).then(song => song._id)
         },
-        artist(song,_,{artistModel}){
-            return artistModel.findById(song.artist)
+        artist(song,_,{Artist}){
+            return Artist.findById(song.artist)
         }
     },
     Artist: {
-        id(artist,_,{artistModel}){
-            return artistModel.findOne(artist).then(artist => artist._id)
+        id(artist,_,{Artist}){
+            return Artist.findOne(artist).then(artist => artist._id)
         },
-        songs(artist, _, {songModel}){
+        songs(artist, _, {Song}){
             console.log(artist)
-            return songModel.find({artist: artist._id})
+            return Song.find({artist: artist._id})
         }
     }
 }

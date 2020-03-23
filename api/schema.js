@@ -57,6 +57,6 @@ const typeDefs = gql`
             createArtist(input: NewArtist!): Artist!
             updateArtist(input: UpdateArtist!): Artist!
         }
-`
+` 
 
 module.exports = typeDefs

@@ -2,15 +2,15 @@ const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./api/schema.js');
 const resolvers  = require('./api/resolvers.js');
 const mongoose = require('mongoose');
-const artistModel = require('./api/models/artist.js');
-const songModel = require('./api/models/song.js');
+const Artist = require('./api/models/artist.js');
+const Song = require('./api/models/song.js');
 
 const server = new ApolloServer(
     {   
         typeDefs, 
         resolvers, 
         context(){
-            return {artistModel, songModel}
+            return {Artist, Song}
         }
     })
 
