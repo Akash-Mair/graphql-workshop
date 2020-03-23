@@ -12,13 +12,17 @@ module.exports = {
             return Song.create(input)
         },
         updateSong(_, {input}, {Song}){
-            return Song.findByIdAndUpdate({_id: input.id}, {...input})
+            const _id = input.id
+            delete input.id
+            return Song.findByIdAndUpdate({_id}, {...input})
         },
         createArtist(_,{input}, {Artist}){
             return Artist.create(input)
         },
         updateArtist(_, {input}, {Artist}){
-            return Artist.findByIdAndUpdate({_id: input.id}, {...input})
+            const _id = input.id
+            delete input.id
+            return Artist.findByIdAndUpdate({_id}, {...input})
         }
     },
     Song: {
@@ -34,7 +38,6 @@ module.exports = {
             return Artist.findOne(artist).then(artist => artist._id)
         },
         songs(artist, _, {Song}){
-            console.log(artist)
             return Song.find({artist: artist._id})
         }
     }
