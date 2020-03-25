@@ -1,0 +1,3 @@
+To Import Songs and artists into Mongo
+Make sure MongoDB is running (you can run it using the 'mongod' command in the terminal and then running 'mongo' in another terminal)
+Once you have mongo running run 'mongo songsgql < songsJson.js'
