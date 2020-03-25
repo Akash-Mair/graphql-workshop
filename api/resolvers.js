@@ -26,16 +26,16 @@ module.exports = {
         }
     },
     Song: {
-        id(song,_,{Song}){
-            return Song.findOne(song).then(song => song._id)
+        id(song){
+            return song._id
         },
         artist(song,_,{Artist}){
             return Artist.findById(song.artist)
         }
     },
     Artist: {
-        id(artist,_,{Artist}){
-            return Artist.findOne(artist).then(artist => artist._id)
+        id(artist){
+            return artist._id
         },
         songs(artist, _, {Song}){
             return Song.find({artist: artist._id})
